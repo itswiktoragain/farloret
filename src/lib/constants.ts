@@ -1,10 +1,8 @@
 // import { version } from '../../package.json';
 
-// LICENSE covers this Open WebUI branding surface, including name, logo,
-// visual, textual, symbolic identifiers, metadata, and surrounding UI.
-// Do not alter, remove, obscure, or replace it except as LICENSE permits:
-// https://docs.openwebui.com/license.
-export const APP_NAME = 'Open WebUI';
+// Farloret is a branded distribution derived from Open WebUI.
+// Upstream licensing and attribution remain in LICENSE.
+export const APP_NAME = 'Farloret';
 
 export const WEBUI_HOSTNAME = '';
 export const WEBUI_BASE_URL = '';
