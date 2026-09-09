@@ -32,6 +32,13 @@ def main(
     pass
 
 
+def _install_farloret_runtime() -> None:
+    # Install compatibility fixes before open_webui.main binds middleware helpers.
+    from open_webui.farloret_compat import install
+
+    install()
+
+
 @app.command()
 def serve(
     host: str = '0.0.0.0',
@@ -73,6 +80,7 @@ def serve(
             os.environ['USE_CUDA_DOCKER'] = 'false'
             os.environ['LD_LIBRARY_PATH'] = ':'.join(LD_LIBRARY_PATH)
 
+    _install_farloret_runtime()
     import open_webui.main  # noqa: F401
     from open_webui.env import UVICORN_WORKERS, UVICORN_WS_PER_MESSAGE_DEFLATE
 
@@ -98,6 +106,7 @@ def dev(
     port: int = 8080,
     reload: bool = True,
 ):
+    _install_farloret_runtime()
     from open_webui.env import UVICORN_WS_PER_MESSAGE_DEFLATE
 
     uvicorn.run(
